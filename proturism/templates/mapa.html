@@ -1,0 +1,226 @@
+{% extends 'index.html' %}
+{% block title %}
+mapa
+{% endblock title %}
+{% block extracss %}
+     <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+     {% endblock extracss %}
+
+    {% block body %}
+    <div id="map"></div>
+    {% endblock body %}
+
+    {% block extrajs %}
+    <!--<script>
+
+      var posiciones=[];
+      var titulos=[];
+      var cod_ubi=[];
+      var inf_window_p=[[],[]];
+      var inf_window_i=[[],[]];
+      var inf_window_r=[[],[]];
+      var inf_window_c=[[],[]];
+      var inf_window_a=[[],[]];
+      var cont_p=0;
+      var cont_i=0;
+      var cont_r=0;
+      var cont_c=0;
+      var cont_a=0;
+     // var matriz_prueba=[[],[]];
+
+    </script>
+        {% for marca in m_lista %}
+        <script>
+            posiciones.push({lat: {{marca.latitud}}, lng: {{marca.longitud}}});
+            titulos.push('{{marca.tipo}}');
+            cod_ubi.push('{{marca.cod_ubicacion}}')
+        </script>
+        {% endfor %}
+
+        {% for inf_p in p_lista %}
+        <script>
+            inf_window_p[cont_p][0]='{{inf_p.cod_ubicacion_id}}';
+            inf_window_p[cont_p][1]='<h2>{{inf_p.nombre}}</h2><p>{{inf_p.fecha_fundacion}}</p>'
+            cont_p++;
+        </script>
+        {% endfor %}
+        {% for inf_i in i_lista %}
+        <script>
+            inf_window_i[cont_i][0]='{{inf_i.cod_ubicacion_id}}';
+            inf_window_i[cont_i][1]='<h2>{{inf_i.nombre}}</h2><p>fecha de fundacion: {{inf_i.fecha_fundacion}}</br>religion: {{inf_i.religion}}</br>capacidad: {{inf_i.capacidad}}</p>'
+            cont_i++;
+        </script>
+        {% endfor %}
+        {% for inf_r in r_lista %}
+        <script>
+            inf_window_r[cont_r][0]='{{inf_r.cod_ubicacion_id}}';
+            inf_window_r[cont_r][1]='<h2>{{inf_r.nombre}}</h2><p>{{inf_r.capacidad}}</br>{{inf_r.clasificacion}}</p>'
+            cont_r++;
+        </script>
+        {% endfor %}
+        {% for inf_c in c_lista %}
+        <script>
+            inf_window_c[cont_c][0]='{{inf_c.cod_ubicacion_id}}';
+            inf_window_c[cont_c][1]='<h2>{{inf_c.nombre}}</h2><p>{{inf_c.clasificacion}}</br>{{inf_c.fecha_fundacion}}</p>'
+            cont_c++;
+        </script>
+        {% endfor %}
+        {% for inf_a in a_lista %}
+        <script>
+            inf_window_a[cont_a][0]='{{inf_a.cod_ubicacion_id}}';
+            inf_window_a[cont_a][1]='<h2>{{inf_a.nombre}}</h2><p>{{inf_a.clasificacion}}</br>{{inf_a.fecha_fundacion}}</p>'
+            cont_a++;
+        </script>
+        {% endfor %}
+
+        <script>
+        //vector donde se almacenaran los marcadores
+        var markers = [];-->
+    <script type="text/javascript">
+      var divmap=document.getElementById('map');
+      function initMap() {
+
+
+
+        var objConfig={
+        zoom: 16,
+        center:  {lat: -22.01392810529076, lng: -63.677741626018076},
+        styles: [
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]
+
+
+
+
+      }
+        var gMapa = new google.maps.Map(divmap,objConfig);
+        //creando la variable de ventana inf
+        var infowindow = new google.maps.InfoWindow();
+        //cargando lat, long y etiquetas al vector marker
+        for (var i=0 ; i <posiciones.length; i++) {
+        var objConfigMarker={
+        position:posiciones[i],
+        map:gMapa,
+        title:titulos[i]}
+      var marker = new google.maps.Marker(objConfigMarker);
+
+      if (titulos[i]=='plaza') {
+          makeInfoWindowEvent(gMapa, infowindow,inf_plaza(cod_ubi[i]), marker);
+      } if (titulos[i]=='colegio') {
+          makeInfoWindowEvent(gMapa, infowindow,inf_colegio(cod_ubi[i]), marker);
+      } if (titulos[i]=='iglesia') {
+          makeInfoWindowEvent(gMapa, infowindow,inf_iglesia(cod_ubi[i]), marker);
+      } if (titulos[i]=='restaurante') {
+          makeInfoWindowEvent(gMapa, infowindow,inf_restaurante(cod_ubi[i]), marker);
+      } if (titulos[i]=='alojamiento') {
+          makeInfoWindowEvent(gMapa, infowindow,inf_alojamiento(cod_ubi[i]), marker);
+      }
+
+
+
+      markers.push(marker);
+
+
+      }
+
+
+
+
+      //generando el agrupador de marcadores
+      var markerCluster = new MarkerClusterer(gMapa, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+      //texto de ventana de informacion
+    /*  var texto='';
+
+      var infowindow=new google.maps.InfoWindow(),marker,i;
+
+      //marcador escuchando el click
+
+      marker.addListenner('click',function(){
+
+        informacion.open(gMapa,marker);
+
+      })*/
+
+
+      }
+        function makeInfoWindowEvent(map, infowindow, contentString, marker) {
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(contentString);
+    infowindow.open(map, marker);
+  });
+}
+    function inf_plaza(codigo){
+      for (var i = cont_p - 1; i >= 0; i--) {
+        if (codigo==inf_window_p[i][0]) {
+          return inf_window_p[i][1];
+        }      }    }
+        function inf_colegio(codigo){
+      for (var i = cont_c - 1; i >= 0; i--) {
+        if (codigo==inf_window_c[i][0]) {
+          return inf_window_c[i][1];
+        }      }    }
+        function inf_restaurante(codigo){
+      for (var i = cont_r - 1; i >= 0; i--) {
+        if (codigo==inf_window_r[i][0]) {
+          return inf_window_r[i][1];
+        }      }    }
+        function inf_iglesia(codigo){
+      for (var i = cont_i - 1; i >= 0; i--) {
+        if (codigo==inf_window_i[i][0]) {
+          return inf_window_i[i][1];
+        }      }    }
+        function inf_alojamiento(codigo){
+      for (var i = cont_a - 1; i >= 0; i--) {
+        if (codigo==inf_window_a[i][0]) {
+          return inf_window_a[i][1];
+        }      }    }
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMu3rDLhNE4dLq8YW_vReY62CUcUz1X4&callback=initMap"
+    async defer></script>
+{% endblock extrajs %}
