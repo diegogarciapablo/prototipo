@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Agregar Lugar</title>
+</head>
+<body>
+
+	<form method="POST">
+		{% csrf_token %}
+		{% if error %}
+		<h2>{{error}}</h2>
+		{% else %}
+		<table>
+			<tr>
+				<td><label>latitud:</label></td><td><input type="text" name="latitud"></td>
+			</tr>
+			<tr>
+				<td><label>longitud:</label></td><td><input type="text" name="longitud"></td>
+			</tr>
+			<tr>
+				<td><label>tipo</label></td>
+				<td><select name="tipo">
+				    <option>colegio</option>
+				    <option>iglesia</option>
+				    <option>plaza</option>
+				    <option>restaurante</option>
+				    <option>alojamiento</option>
+			    	</select>
+			    </td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2"><button type="submit">Siguiente</button></td>
+			</tr>
+		</table>
+
+		{% endif %}
+	</form>
+
+</body>
+</html>

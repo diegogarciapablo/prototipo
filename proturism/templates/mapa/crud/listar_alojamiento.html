@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+ Listado de Alojamientos
+
+ {% endblock titulo %}
+
+ {% block body %}
+
+  {% if a_lista %}
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>nombre</th>
+  				<th>clasificacion</th>
+  				<th>fecha fundacion</th>
+  				<th>cod_ubicacion</th>
+          <th>Opciones</th>
+  			</tr>
+  		</thead>
+  		<body>
+  			{% for alojamiento in a_lista %}
+  				<tr>
+  					<td>{{alojamiento.cod_alojamiento}}</td>
+  					<td>{{alojamiento.nombre}}</td>
+  					<td>{{alojamiento.clasificacion}}</td>
+  					<td>{{alojamiento.fecha_fundacion}}</td>
+  					<td>{{alojamiento.cod_ubicacion}}</td>
+            <td>
+              <a href="{% url 'crud:editar_alojamiento' alojamiento.cod_alojamiento %}">Editar</a>
+              <a href="{% url 'crud:eliminar_alojamiento' alojamiento.cod_alojamiento %}">Eliminar</a>
+            </td>
+  				</tr>
+  			{% endfor %}  			
+  		</body>
+  	</table>
+  {% else %}
+   <h1>No existen alojamientos registrados</h1>
+  {% endif %}
+
+ {% endblock body %}

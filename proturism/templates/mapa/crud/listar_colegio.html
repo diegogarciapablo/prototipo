@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+ Listado de Colegios
+
+ {% endblock titulo %}
+
+ {% block body %}
+
+  {% if c_lista %}
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>nombre</th>
+  				<th>fecha_fundacion</th>
+  				<th>clasificacion</th>
+  				<th>cod_ubicacion</th>
+          <th>Opciones </th>
+  			</tr>
+  		</thead>
+  		<body>
+  			{% for colegio in c_lista %}
+  				<tr>
+  					<td>{{colegio.cod_colegio}}</td>
+  					<td>{{colegio.nombre}}</td>
+  					<td>{{colegio.fecha_fundacion}}</td>
+  					<td>{{colegio.clasificacion}}</td>
+  					<td>{{colegio.cod_ubicacion}}</td>
+            <td>
+              <a href="{% url 'crud:editar_colegio' colegio.cod_colegio %}">Editar</a>
+              <a href="{% url 'crud:eliminar_colegio' colegio.cod_colegio  %}">Eliminar</a>
+            </td>
+  				</tr>
+  			{% endfor %}  			
+  		</body>
+  	</table>
+  {% else %}
+   <h1>No existen colegios registrados</h1>
+  {% endif %}
+
+ {% endblock body %}

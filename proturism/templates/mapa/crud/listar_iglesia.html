@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+ Listado de Iglesias
+
+ {% endblock titulo %}
+
+ {% block body %}
+
+  {% if i_lista %}
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>nombre</th>
+  				<th>fecha_fundacion</th>
+  				<th>religion</th>
+          <th>capacidad</th>
+  				<th>cod_ubicacion</th>
+          <th>Opciones</th>
+  			</tr>
+  		</thead>
+  		<body>
+  			{% for iglesia in i_lista %}
+  				<tr>
+  					<td>{{iglesia.cod_iglesia}}</td>
+  					<td>{{iglesia.nombre}}</td>
+  					<td>{{iglesia.fecha_fundacion}}</td>
+  					<td>{{iglesia.religion}}</td>
+            <td>{{iglesia.capacidad}}</td>
+  					<td>{{iglesia.cod_ubicacion}}</td>
+            <td>
+              <a href="{% url 'crud:editar_iglesia' iglesia.cod_iglesia %}">Editar</a>
+              <a href="{% url 'crud:eliminar_iglesia' iglesia.cod_iglesia %}">Eliminar</a>
+            </td>
+  				</tr>
+  			{% endfor %}  			
+  		</body>
+  	</table>
+  {% else %}
+   <h1>No existen iglesias registrados</h1>
+  {% endif %}
+
+ {% endblock body %}

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+ Listado de Restaurantes
+
+ {% endblock titulo %}
+
+ {% block body %}
+
+  {% if r_lista %}
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>nombre</th>
+          <th>capacidad</th>
+          <th>clasificacion</th>
+  				<th>cod_ubicacion</th>
+          <th>Opciones</th>
+  			</tr>
+  		</thead>
+  		<body>
+  			{% for restaurante in r_lista %}
+  				<tr>
+  					<td>{{restaurante.cod_restaurante}}</td>
+  					<td>{{restaurante.nombre}}</td>
+  					<td>{{restaurante.capacidad}}</td>
+  					<td>{{restaurante.clasificacion}}</td>
+  					<td>{{restaurante.cod_ubicacion}}</td>
+            <td>
+              <a href="{% url 'crud:editar_restaurante' restaurante.cod_restaurante %}">Editar</a>
+              <a href="{% url 'crud:eliminar_restaurante' restaurante.cod_restaurante %}">Eliminar</a>
+            </td>
+  				</tr>
+  			{% endfor %}  			
+  		</body>
+  	</table>
+  {% else %}
+   <h1>No existen restaurantes registrados</h1>
+  {% endif %}
+
+ {% endblock body %}

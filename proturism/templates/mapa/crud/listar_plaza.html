@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+ Listado de Plazas
+
+ {% endblock titulo %}
+
+ {% block body %}
+
+  {% if p_lista %}
+  	<table>
+  		<thead>
+  			<tr>
+  				<th>#</th>
+  				<th>nombre</th>
+  				<th>fecha_fundacion</th>
+  				<th>cod_ubicacion</th>
+          <th>Opciones</th>
+  			</tr>
+  		</thead>
+  		<body>
+  			{% for plaza in p_lista %}
+  				<tr>
+  					<td>{{plaza.cod_plaza}}</td>
+  					<td>{{plaza.nombre}}</td>
+  					<td>{{plaza.fecha_fundacion}}</td>
+  					<td>{{plaza.cod_ubicacion}}</td>
+            <td>
+              <a href="{% url 'crud:editar_plaza' plaza.cod_plaza %}">Editar</a>
+              <a href="{% url 'crud:eliminar_plaza' plaza.cod_plaza %}">Eliminar</a>
+            </td>
+  				</tr>
+  			{% endfor %}  			
+  		</body>
+  	</table>
+  {% else %}
+   <h1>No existen plazas registrados</h1>
+  {% endif %}
+
+ {% endblock body %}

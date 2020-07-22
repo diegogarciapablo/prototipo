@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block titulo}paso 1{% endblock titulo}
+
+{% block body %}
+    <form action="{% url 'crud:alugar'%}" method="get">
+  <p>
+
+    Seleccione:
+
+    <select name="datos">
+
+      <option>Lugar</option>
+
+      <option>Visita Virtual</option>
+
+      <option>Calendario</option>
+
+    </select>
+ </p>
+    <input type="submit"  value="Agregar" onclick="">
+    <input type="submit" value="Buscar">
+
+
+
+
+</form>
+{% endblock body %}
+
