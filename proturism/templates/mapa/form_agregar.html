@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Administracion de Agregar Datos</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block title %}
+administracion de datos sistema
+{% endblock title %}
+{% block extracss %}
+{% endblock extracss %}
+{% block body %}
 <form action="/my-handling-form-page" method="post">
   <p>
 
@@ -25,7 +26,8 @@
     <button type="button" onclick="location.href = 'hola.html'">Botón</button>
 
   </p>
- 
+
 </form>
-</body>
-</html>
+{% endblock body %}
+{% block extrajs %}
+{% endblock extrajs %}

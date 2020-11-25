@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
-	path('', include(('apps.app_map.urls','app_map'))),
+
+	path('', include(('apps.app_map.urls','app_map')),name='mapa'),
 	path('map/', include (('apps.app_map.urls','crud'))),
     path('admin/', admin.site.urls),
+
 ]

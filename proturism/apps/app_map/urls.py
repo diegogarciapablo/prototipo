@@ -1,13 +1,14 @@
 from django.urls import path
 
-from .views import MostrarMapa
+from .views import MostrarMapa, Index
 from .views import paso1, AñadirLugar, CrearColegio, CrearIglesia, CrearAlojamiento, CrearPlaza, CrearRestaurante
 from .views import ListarColegio, ListarPlaza, ListarRestaurante, ListarAlojamiento, ListarIglesia, EditarColegio
 from .views import EditarIglesia, EditarAlojamiento, EditarPlaza, EditarRestaurante, EliminarColegio, EliminarIglesia
 from .views import EliminarPlaza, EliminarRestaurante, EliminarAlojamiento
 
 urlpatterns = [
-    	path('',MostrarMapa,name='mapa'),
+    	path('',Index,name='main'),
+    	path('mapa',MostrarMapa,name='mapa'),
     	path('add_lugar/',AñadirLugar, name='alugar'),
 		path('choice/',paso1, name='eleccion'),
 

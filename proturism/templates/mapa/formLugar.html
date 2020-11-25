@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Agregar Lugar</title>
-</head>
-<body>
-
-	<form method="POST">
+{% extends 'index.html' %}
+{% block title %}
+Agregar Lugar
+{% endblock title %}
+{% block extracss %}
+{% endblock extracss %}
+{% block body %}
+<form method="POST">
 		{% csrf_token %}
 		{% if error %}
 		<h2>{{error}}</h2>
@@ -35,6 +35,6 @@
 
 		{% endif %}
 	</form>
-
-</body>
-</html>
+{% endblock body %}
+{% block extrajs %}
+{% endblock extrajs %}

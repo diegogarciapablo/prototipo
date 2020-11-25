@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="utf-8">
-	<title>Agregar lugar de Iglesia</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% block title %}
+Agregar lugar de Iglesia
+{% endblock title %}
+{% block extracss %}
+{% endblock extracss %}
+{% block body %}
 <form method="POST">
 {% csrf_token %}
  {% if error %}
@@ -12,7 +12,8 @@
  {% else %}
   {{ var_iglesia.as_p }}
   <button type="submit">Crear</button>
- {% endif %}	
+ {% endif %}
 </form>
-</body>
-</html>
+{% endblock body %}
+{% block extrajs %}
+{% endblock extrajs %}

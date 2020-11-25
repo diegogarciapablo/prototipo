@@ -4,14 +4,14 @@ from .models import colegio, iglesia, plaza, restaurante, alojamiento, admin_agr
 from  django.core.exceptions import ObjectDoesNotExist
 
 def MostrarMapa(request):
-	'''m_lista = admin_agregar.objects.all()
+	m_lista = admin_agregar.objects.all()
 	c_lista = colegio.objects.filter()
 	i_lista = iglesia.objects.all()
 	r_lista = restaurante.objects.all()
 	p_lista = plaza.objects.all()
 	a_lista = alojamiento.objects.all()
-	return render(request,'mapa_main/mapa.html',{'m_lista': m_lista,'p_lista': p_lista,'i_lista': i_lista,'c_lista': c_lista,'a_lista': a_lista,'r_lista': r_lista})'''
-	return render(request,'mapa/mapa.html')
+	return render(request,'mapa/mapa.html',{'m_lista': m_lista,'p_lista': p_lista,'i_lista': i_lista,'c_lista': c_lista,'a_lista': a_lista,'r_lista': r_lista})
+
 
 def paso1(request):
 	return render(request,'mapa/crud/choice_add.html')
@@ -237,3 +237,6 @@ def EliminarAlojamiento(request, cod_alojamiento):
 	var_alojamiento = alojamiento.objects.get(cod_alojamiento=cod_alojamiento)
 	var_alojamiento.delete()
 	return redirect('crud:list_alojamiento')
+
+def Index(request):
+	return render(request, 'main.html')

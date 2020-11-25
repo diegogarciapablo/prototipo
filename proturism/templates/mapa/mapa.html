@@ -20,7 +20,7 @@ mapa
     {% endblock body %}
 
     {% block extrajs %}
-    <!--<script>
+    <script>
 
       var posiciones=[];
       var titulos=[];
@@ -84,8 +84,8 @@ mapa
 
         <script>
         //vector donde se almacenaran los marcadores
-        var markers = [];-->
-    <script type="text/javascript">
+        var markers = [];
+
       var divmap=document.getElementById('map');
       function initMap() {
 
@@ -173,7 +173,7 @@ mapa
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
       //texto de ventana de informacion
-    /*  var texto='';
+      var texto='';
 
       var infowindow=new google.maps.InfoWindow(),marker,i;
 
@@ -183,7 +183,7 @@ mapa
 
         informacion.open(gMapa,marker);
 
-      })*/
+      })
 
 
       }
@@ -222,5 +222,6 @@ mapa
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWMu3rDLhNE4dLq8YW_vReY62CUcUz1X4&callback=initMap"
-    async defer></script>
+    async defer>
+    </script>
 {% endblock extrajs %}
