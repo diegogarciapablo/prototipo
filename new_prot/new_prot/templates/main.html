@@ -1,13 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+    <!-- fontawesome para los iconos -->
+    <script src="https://kit.fontawesome.com/55ae1a8a15.js" crossorigin="anonymous"></script>
+    <link  rel = "stylesheet"  href = "http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link  rel = " stylesheet "  href = " css / leaflet.awesome-markers.css ">
+    <script  src = "js / leaflet.awesome-markers.js"> </script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'main/assets/css/bootstrap.min.css' %}">
@@ -18,7 +22,9 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:500|Roboto:300,400,700&display=swap" rel="stylesheet">
 
-    <title>bienvenido</title>
+    <title>bienvenido a{% block title %}l inicio{% endblock %}</title>
+    {% block extracss %}
+    {% endblock extracss %}
 </head>
 
 <body>
@@ -32,13 +38,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item px-3">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{% url 'crud:index' %}">Home</a>
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link" href="#">calendario</a>
                     </li>
                     <li class="nav-item px-3">
-                        <a class="nav-link" href="#">mapa</a>
+                        <a class="nav-link" href="{% url 'crud:mapa' %}">mapa</a>
                     </li>
                     <li class="nav-item px-3">
                         <a class="nav-link" href="#">tour virtual</a>
@@ -53,6 +59,7 @@
             </div>
         </div>
     </nav>
+    {% block content %}
 
     <section id="slider">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -222,7 +229,7 @@
         </div>
     </section>
 
-
+    {% endblock %}
 
     <footer class="bg-dark text-light py-4">
         <div class="container">
@@ -250,6 +257,8 @@
     <script src="{% static 'main/assets/js/jquery.js'%}"></script>
     <script src="{% static 'main/assets/js/popper.min.js'%}"></script>
     <script src="{% static 'main/assets/js/bootstrap.min.js'%}"></script>
+    {% block extrajs %}
+    {% endblock extrajs %}
 </body>
 
 </html>

@@ -1,0 +1,76 @@
+{% extends 'main.html'%}
+{% block title %}
+ agregando ubicacion
+{% endblock %}
+{% block content %}
+	<section class="bg-light-grey " >
+        <div class="container" style="margin-top:20px; ">
+        	<div class="row" >
+        		<div class="col" >
+
+        		<form method="POST" >
+        			{% csrf_token %}
+        			{% if error %}
+        			 	<h2>{{error}}</h2>
+        			{% else %}
+        			<table>
+        			<fieldset>
+
+        				<tr>
+        					<td>
+        						<label>tipo de ubicacion: </label>
+        					</td>
+        					<td>
+        						<select name="t_ubi" id="t_ubicacion">
+			        				<option value="plaza">plaza</option>
+			        				<option value="comida">e. comida</option>
+			        				<option value="comercial">z. comercial</option>
+			        				<option value="alojamiento">alojamiento</option>
+			        				<option value="educativo">e. educativo</option>
+			        				<option value="medico">e. medico</option>
+			        				<option value="religioso">e. religioso</option>
+							    </select>
+        					</td>
+        				</tr>
+        				<tr>
+        					<td><label>nombre del lugar: </label></td>
+        					<td><input type="text" name="n_ubi"><br></td>
+        				</tr>
+        				<tr>
+        					<td><label>escriba las calles: </label></td>
+        					<td><input type="text" name="direccion"></td>
+        				</tr>
+        				<tr>
+        					<td><label>ingrese latitud: </label></td>
+        					<td><input type="text" name="latit"></td>
+        				</tr>
+        				<tr>
+        					<td><label>ingrese longitud: </label></td>
+        					<td><input type="text" name="longi"></td>
+        				</tr>
+					    <tr>
+        					<td width="145px"><label>foto: </label></td>
+        					<td><input type="text" name="foto"></td>
+        				</tr>
+        			</fieldset>
+        			</table>
+
+        			<fieldset style="clear: left;">
+        				<button type="submit">crear</button>
+        			</fieldset>
+
+        			{% endif %}
+        		</form>
+        		</div>
+
+        		<div class="col">
+        			{{m | safe}}
+        		</div>
+        	</div>
+        </div>
+	</section>
+	{% endblock %}
+	{% block extrajs %}
+
+
+	{% endblock %}

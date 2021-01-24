@@ -1,0 +1,43 @@
+{% extends 'main.html'%}
+{% block title %}
+ la prueba del mapa
+{% endblock %}
+{% block content %}
+	<section class="bg-light-grey " >
+        <div class="container" style="margin-top:20px; ">
+        	<div class="row" >
+        		<div class="col" >
+        		<form method="POST" >
+        			{% csrf_token %}
+        			{% if error %}
+        			 	<h2>{{error}}</h2>
+        			{% else %}
+
+        		{% endif %}
+        		</form>
+        		</div>
+
+        		<div class="col">
+        			{{m | safe}}
+        		</div>
+        	</div>
+        </div>
+	</section>
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+var select = document.getElementById('t_ubicacion');
+select.addEventListener('change',function(){
+	document.getElementById("comida").style.visibility = 'hidden';
+	document.getElementById("comercial").style.visibility = 'hidden';
+	document.getElementById("alojamiento").style.visibility = 'hidden';
+	document.getElementById("educativo").style.visibility = 'hidden';
+	document.getElementById("medico").style.visibility = 'hidden';
+	document.getElementById("religioso").style.visibility = 'hidden';
+	var selectedOption = this.options[select.selectedIndex];
+	document.getElementById(selectedOption.value).style.visibility = 'visible';
+
+  });
+</script>
+
+{% endblock %}
