@@ -1,4 +1,4 @@
-        {% extends 'main.html'%}
+        {% extends 'adm/index_adm.html'%}
         {% block title %}
         confirmacion
         {% endblock %}
@@ -7,16 +7,17 @@
                 <div class="container" style="margin-top:20px; ">
                 	<div class="row" >
                 		<div class="col" >
-                                        <form method="POST" >
-                                             {% csrf_token %}
-                                             {% if error %}
-                                             <h2>{{error}}</h2>
-                                             {% else %}
-                                                <h2>esta es una muestra</h2>
-                                                {% endif %}
-                                                <fieldset >
-                                                <button type="submit">crear</button>
-                                        </fieldset>
+                                        <form method="POST" class="form-control">
+                                            {% csrf_token %}
+                                            <fieldset >
+                                            {% if error %}
+                                            <h2>{{error}}</h2>
+                                            {% else %}
+                                                <label><h2>esta es una muestra</h2></label>
+                                            {% endif %}
+
+                                                <button type="submit" class="btn btn-primary btn-user btn-block">crear</button>
+                                            </fieldset>
                                         </form>
                                 </div>
                                 <div class="col">
@@ -24,7 +25,7 @@
                                 </div>
                         </div>
 
-                        </div>
+
                 </div>
         </section>
         {% endblock %}

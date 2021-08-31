@@ -1,0 +1,82 @@
+
+  {% extends 'main.html' %}
+  {% load static %}
+  {% block title %}
+  Listado de {{tipo}}
+  {% endblock %}
+
+  {% block content %}
+
+  {% if tipo == 'comida' %}
+  <section class="bg-light-grey" style="background-image: url('{%static 'images/fond_serv/comida.jpe'%}'); object-fit: contain;">
+  {% elif tipo == 'alojamiento' %}
+  <section class="bg-light-grey" style="background-image: url('{%static 'images/fond_serv/casa.jpg'%}');">
+  {% elif tipo == 'medico' %}
+  <section class="bg-light-grey" style="background-image: url('{%static 'images/fond_serv/medico5.jpe'%}');">
+  {% elif tipo == 'religioso' %}
+  <section class="bg-light-grey" style="background-image: url('{%static 'images/fond_serv/religion.jpg'%}');">
+  {% elif tipo == 'transporte' %}
+  <section class="bg-light-grey" style="background-image: url('{%static 'images/fond_serv/transporte.jpg'%}');">
+  {% endif %}
+
+    <div class="container">
+      <div class="row">
+        {% if servicio %}
+        <div class="col">
+          <div class="row">
+            <h4>listado de {{tipo}}</h4>
+          </div>
+          <div class="row">
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>nombre</th>
+                  <th>direccion</th>
+                  <th>telefono</th>
+                  {% if tipo == 'alojamiento' %}
+                    <th>clasificacion</th>
+                  {% elif tipo == 'medico' %}
+                    <th>nivel</th>
+                  {% elif tipo == 'religioso' %}
+                    <th>fe</th>
+                  {% elif tipo == 'transporte' %}
+                    <th>tipo</th>
+                  {% endif %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for list in servicio %}
+                <tr>
+                  <td>{{list.id}}</td>
+                  <td><b>{{list.n_ubi}}</b></td>
+                  <td>{{list.direccion}}</td>
+                  {% for list_2 in servicio_2 %}
+                    {% if list_2.ubi_id == list.id %}
+                      <td>{{list_2.telf}}</td>
+                      {% if tipo == 'alojamiento' %}
+                        <td>{{list_2.clas}}</td>
+                      {% elif tipo == 'medico' %}
+                        <td>{{list_2.nivel}}</td>
+                      {% elif tipo == 'religioso' %}
+                        <td>{{list_2.relig}}</td>
+                      {% elif tipo == 'transporte' %}
+                        <td>{{list_2.tipo}}</td>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+
+            {% else %}
+            <h1>No existen {{tipo}} registradas</h1>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}

@@ -1,0 +1,375 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- fontawesome para los iconos -->
+    <link rel="stylesheet" href="{% static 'main/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link  rel = "stylesheet"  href = "http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:500|Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'materialize/main/main.css' %}">
+    {% block extracss %}
+    {% endblock extracss %}
+</head>
+<body>
+
+
+	<!--barra de navegacion fija-->
+
+	<div class="navbar-fixed">
+		<!--estructura-->
+		<nav>
+			<div class="nav-wrapper grey darken-3">
+				<!--logo-->
+				<img src="{% static 'images/perfiles/yuna.jpg' %}" alt="" class="circle" style="height: 64px;line-height: 64px;">
+				<a href="{% url 'crud:index' %}" class="brand-logo">Yacuiba</a>
+				<!--para arbir en movil-->
+				<a href="#" data-target="mobile-navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<!--lista de estructura-->
+				<ul id="navbar-items" class="right hide-on-med-and-down">
+					<li><a href="sass.html">calendario</a></li>
+					<li><a href="badges.html">mapa</a></li>
+					<li><a href="badges.html">paginas amarillas</a></li>
+					<li><a href="badges.html">tour  virtual</a></li>
+					<li><a href="badges.html">albumes</a></li>
+					{% if user.is_authenticated %}
+					<li><a class="dropdown-trigger" data-target="dropdown-notif" href="#">
+						notificaciones<span class="new badge red">4</span>
+						</a>
+					</li>
+					<li>
+						<a class="dropdown-trigger" data-target="dropdown-perf" href="#">
+							{{user.username | upper}}
+						</a>
+					</li>
+					{% endif %}
+				</ul>
+				<!--listas de menus despegables-->
+
+				<!--listas de notificaciones-->
+
+				<ul id="dropdown-notif" class="collection dropdown-content ">
+					<li class="collection-item avatar">
+						<img src="{% static 'images/perfiles/yuna.jpg' %}" alt="" class="circle">
+						<span class="title">Title</span>
+						<p>First Line <br>
+							Second Line
+						</p>
+
+					</li>
+					<li class="collection-item avatar">
+						<i class="material-icons circle">folder</i>
+						<span class="title">Title</span>
+						<p>First Line <br>
+							Second Line
+						</p>
+
+					</li>
+					<li class="collection-item avatar">
+						<i class="material-icons circle green">insert_chart</i>
+						<span class="title">Title</span>
+						<p>First Line <br>
+							Second Line
+						</p>
+
+					</li>
+					<li class="collection-item avatar">
+						<i class="material-icons circle red">play_arrow</i>
+						<span class="title">Title</span>
+						<p>First Line <br>
+							Second Line
+						</p>
+
+					</li>
+				</ul>
+
+				<!--menu para el perfil-->
+				<ul id="dropdown-perf" class="dropdown-content">
+					{% if user.is_authenticated %}
+					<li><a href="#!"><i class="small material-icons">account_box</i>perfil</a></li>
+					{% if user.is_staff == True %}
+					<li><a href="{% url 'crud:adm_site' %}"><i class="small material-icons">settings</i>administracion</a></li>
+					{% endif %}
+					<li class="divider"></li>
+					<li>
+						<a class="waves-effect modal-trigger" href="#logoutModal"><i class="small material-icons">exit_to_app</i>cerrar sesion</a>
+					</li>
+					{% else %}
+					<li><a href="#!"><a href="{% url 'login'%}"><i class="small material-icons">input</i>iniciar sesion</a></li>
+					<li><a href="#!"><a href="{% url 'crud:registro'%}"><i class="small material-icons">person_add</i>registro</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<!--fin de barra de navegacion-->
+	{% block content %}
+	<!--carrusel-->
+	<div class="wrapper">
+		<div class="slider-holder">
+
+				<div class="carousel carousel-slider center-align">
+				    <div class="carousel-item" >
+				    	<h1 class="d-block" >Laguna Santa marta</h1>
+                    	<h4 >orillas de la laguna a la luz de la luna.</h4>
+				    	<img src="{%static 'main/assets/images/slider1.jpg'%}">
+				    </div>
+				    <div class="carousel-item" >
+				    	<h1 class="d-block">Conoce nuevos lugares</h1>
+                        <h4 >Que esperas parar apreder un poco<br>mas de ti viajando.</h4>
+				    	<img src="{%static 'main/assets/images/slider2.jpg'%}" >
+				    </div>
+				    <div class="carousel-item" >
+				    	<h1 class="d-block"><font color="black">Conoce yacuiba</font></h1>
+                        <h4 ><font color="black">ven y conoce esta frontera comercial con argentina.</font></h4>
+				    	<img src="{%static 'main/assets/images/slider3.png'%}">
+				    </div>
+				</div>
+
+		</div>
+	</div>
+	<!--fin carrusel-->
+	<section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-light">recuerdos de yacuiba</h2>
+                    <p class="lead text-muted">se parte de las vivencias locales en imagenes.</p>
+                    <div class="portfolio-item mt-6">
+                        <a href="#">
+                            <img src="{%static 'main/assets/images/portfolio-01.jpg'%}" class="img-fluid">
+                            <div class="portfolio-details bg-light p-4">
+                                <h4 class="text-dark">festividad al santo patrono</h4>
+                                <p class="text-muted mb-0">fotos del evento de anteriores años.</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="portfolio-item mt-6 mb-6">
+                        <a href="#">
+                            <img src="{%static 'main/assets/images/portfolio-02.jpg'%}" class="img-fluid">
+                            <div class="portfolio-details bg-light p-4">
+                                <h4 class="text-dark">FESTIFRONT</h4>
+                                <p class="text-muted mb-0">momentos vividos capturados en imagenes.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="portfolio-item">
+                        <a href="#">
+                            <img src="{%static 'main/assets/images/portfolio-03.jpg'%}" class="img-fluid">
+                            <div class="portfolio-details bg-light p-4">
+                                <h4 class="text-dark">navidad en Yacuiba</h4>
+                                <p class="text-muted mb-0">comparte con nosotros la navidad. </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="portfolio-item mt-6">
+                        <a href="#">
+                            <img src="{%static 'main/assets/images/portfolio-04.jpg'%}" class="img-fluid">
+                            <div class="portfolio-details bg-light p-4">
+                                <h4 class="text-dark">expochaco</h4>
+                                <p class="text-muted mb-0">feria de la expocision de productos locales.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <p class="text-gold mb-0">aun tenemos mas para ofrecer</p>
+                <a href="#" class="text-muted">sigue bajando, te sorprenderas<i
+                        class="icon ion-md-arrow-forward ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light-grey">
+        <div class="container">
+
+                <h2 class="text-dark">empieza a usar el mapa</h2>
+                <p class="lead text-muted">pero aun no es todo aun hay mas si sigues bajando.</p>
+
+
+            <div class="card mt-6 bg-dark p-4 border-0">
+                <div class="row d-flex">
+                    <div class="col-md-8">
+                        <img class="d-block w-100" src="{%static 'main/assets/images/slider3.png'%}" alt="First slide">
+                    </div>
+                    <div class="col-md-4 align-self-center text-lg-right text-sm-left">
+                        <a href="{% url 'crud:mapa' %}" class="btn btn-primary ml-auto d-inline-block my-2" style="color: black; background-color:white;">acceder al mapa </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+
+                <h2 class="text-light">prueba la experiencia de las visitas virtuales en yacuiba</h2>
+                <p class="lead text-muted">en la seccion de visitas virtuales encontraras mas.</p>
+
+            <div class="row mt-6">
+                <div class="col-md-4">
+                    <div class="blog-item position-relative rounded mb-5">
+                        <a href="#">
+                            <div class="blog-info position-absolute">
+                                <p class="text-gold mb-3">plaza 6 de agosto
+                                </p>
+                                <h5>¿quieres dar una vuelta por la plaza principal?</h5>
+                            </div>
+                            <img src="{%static 'main/assets/images/blog-01.jpg'%}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-item position-relative mb-5">
+                        <a href="#">
+                            <div class="blog-info position-absolute">
+                                <p class="text-gold mb-3"><span class="font-weight-bold">Iglesia San Pedro</p>
+                                <h5>siempre eres bienvenido aqui</h5>
+                            </div>
+                            <img src="{%static 'main/assets/images/blog-02.jpg'%}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="blog-item position-relative rounded">
+                        <a href="#">
+                            <div class="blog-info position-absolute">
+                                <p class="text-gold mb-3"><span class="font-weight-bold">tercer lugar
+                                </p>
+                                <h5>descripcion breve</h5>
+                            </div>
+                            <img src="{%static 'main/assets/images/blog-03.jpg'%}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-6">
+                <p class="text-gold mb-0">gracias por tu visita</p>
+                <a href="#" class="text-muted">View all of our tech posts <i
+                        class="icon ion-md-arrow-forward ml-2"></i></a>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    <footer class="page-footer grey darken-3">
+    	<div class="footer-copyright">
+    		<div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item lead mx-2"><a href="https://es-la.facebook.com/"><img src="{%static 'main/assets/images/facebook.svg'%}" class="img-fluid"></a></li>
+                        <li class="list-inline-item lead mx-2"><a href="https://www.instagram.com/"><img src="{%static 'main/assets/images/instagram.svg'%}" class="img-fluid"></a></li>
+                        <li class="list-inline-item lead mx-2"><a href="https://www.youtube.com/"><img src="{%static 'main/assets/images/youtube.svg'%}" class="img-fluid"></a></li>
+
+                    </ul>
+                </div>
+                {% if user.is_authenticated %}
+                {% else %}
+                <div class="col-md-6 text-sm-right">
+                    <a href="{% url 'login' %}" style="color: white;">ingreso</a>
+                    <a href="{% url 'crud:registro'%}" style="color: white;">registro</a>
+                </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    	</div>
+    </footer>
+
+
+
+
+
+<!--lista de menu para movil-->
+<ul class="sidenav" id="mobile-navbar">
+  <li><a href="#">primero</a></li>
+  <li><a href=""><span class="new badge">4</span>segundo</a></li>
+  <li><a href="">tercero</a></li>
+</ul>
+<!--modulo de cierre de sesion-->
+
+  <div id="logoutModal" class="modal">
+    <div class="modal-content">
+      <h4>Listo para salir?</h4>
+      <p>Seleccione "Salir" si realmente desea cerrar sesión.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary modal-close" type="button" data-dismiss="modal">Cancelar</button>
+		<a class="btn btn-primary" href="{% url 'logout' %}">Salir</a>
+    </div>
+  </div>
+
+
+
+
+		<!--estructura-->
+
+	  	<!--version mobile-->
+
+	<script src="{% static 'main/assets/js/jquery.js'%}"></script>
+    <script src="{% static 'main/assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'main/assets/js/bootstrap.min.js'%}"></script>
+	<script src="https://kit.fontawesome.com/55ae1a8a15.js" crossorigin="anonymous"></script>
+	<script src="{% static 'materialize/js/materialize.min.js' %}"></script>
+	<script src="{% static 'materialize/main/main.js' %}"></script>
+	{% if messages %}
+        {%for message in messages %}
+            <!-- aviso -->
+            {% if message.tags == 'success' %}
+            <script type="text/javascript">
+                M.toast({
+                    html:'{{message}}',
+                    classes:'green rounded',
+                    displayLength: 3000,
+                    });
+            </script>
+            {% endif %}
+            <!-- informacion -->
+            {% if message.tags == 'info' %}
+            <script type="text/javascript">
+                M.toast({
+                    html:'{{message}}',
+                    classes:'blue rounded',
+                    displayLength: 3000,
+                    });
+            </script>
+            {% endif %}
+            <!-- peligro -->
+            {% if message.tags == 'warning' %}
+            <script type="text/javascript">
+                M.toast({
+                    html:'{{message}}',
+                    classes:'orange rounded',
+                    displayLength: 3000,
+                    });
+            </script>
+            {% endif %}
+            <!-- error -->
+            {% if message.tags == 'error' %}
+            <script type="text/javascript">
+                M.toast({
+                    html:'{{message}}',
+                    classes:'red rounded',
+                    displayLength: 3000,
+                    });
+            </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% block extrajs %}
+    {% endblock extrajs %}
+</body>
+</html>

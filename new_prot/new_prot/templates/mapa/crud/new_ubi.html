@@ -1,4 +1,4 @@
-{% extends 'main.html'%}
+{% extends 'adm/index_adm.html' %}
 {% block title %}
  agregando ubicacion
 {% endblock %}
@@ -8,20 +8,20 @@
         	<div class="row" >
         		<div class="col" >
 
-        		<form method="POST" >
+        		<form class="user" method="POST" >
         			{% csrf_token %}
         			{% if error %}
         			 	<h2>{{error}}</h2>
         			{% else %}
-        			<table>
-        			<fieldset>
 
-        				<tr>
-        					<td>
-        						<label>tipo de ubicacion: </label>
+        			<table>
+        			<fieldset class="form_group">
+        				<tr >
+        					<td >
+                                                        <label >tipo de ubicacion: </label>
         					</td>
         					<td>
-        						<select name="t_ubi" id="t_ubicacion">
+        						<select name="t_ubi" id="t_ubicacion" class="form-control">
 			        				<option value="plaza">plaza</option>
 			        				<option value="comida">e. comida</option>
 			        				<option value="comercial">z. comercial</option>
@@ -29,34 +29,30 @@
 			        				<option value="educativo">e. educativo</option>
 			        				<option value="medico">e. medico</option>
 			        				<option value="religioso">e. religioso</option>
-							    </select>
+							</select>
         					</td>
         				</tr>
         				<tr>
         					<td><label>nombre del lugar: </label></td>
-        					<td><input type="text" name="n_ubi"><br></td>
+        					<td><input type="text" name="n_ubi" class="form-control form-control-user"><br></td>
         				</tr>
         				<tr>
         					<td><label>escriba las calles: </label></td>
-        					<td><input type="text" name="direccion"></td>
+        					<td><input type="text" name="direccion" class="form-control form-control-user"></td>
         				</tr>
         				<tr>
         					<td><label>ingrese latitud: </label></td>
-        					<td><input type="text" name="latit"></td>
+        					<td><input type="text" name="latit" class="form-control form-control-user"></td>
         				</tr>
         				<tr>
         					<td><label>ingrese longitud: </label></td>
-        					<td><input type="text" name="longi"></td>
-        				</tr>
-					    <tr>
-        					<td width="145px"><label>foto: </label></td>
-        					<td><input type="text" name="foto"></td>
+        					<td><input type="text" name="longi" class="form-control form-control-user"></td>
         				</tr>
         			</fieldset>
         			</table>
 
         			<fieldset style="clear: left;">
-        				<button type="submit">crear</button>
+        				<button type="submit" class="btn btn-primary btn-user btn-block">crear</button>
         			</fieldset>
 
         			{% endif %}

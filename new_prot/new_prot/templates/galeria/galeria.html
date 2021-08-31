@@ -1,0 +1,74 @@
+{% extends 'main.html'%}
+{% load static %}
+{% block title %} galeria{% endblock %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}">
+<link rel="stylesheet" href="{% static 'galeria/css/estilos.css'%}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col l12 center-align" >
+			<h1 class="titulo">Lightbox</h1>
+		</div>
+	</div>
+
+	<div class="row galeria">
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder">
+                         <img src="{% static 'images/albumes/galeria_prueba/img/1.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
+                    </div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder">
+                         <img src="{% static 'images/albumes/galeria_prueba/img/1.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit.">
+                    </div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/2.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/3.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/4.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/5.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/6.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/7.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/8.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/9.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/10.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+
+               <div class="col s12 m4 l3">
+                    <div class="material-placeholder"><img src="{% static 'images/albumes/galeria_prueba/img/11.jpg'%}" alt="" class="responsive-img materialboxed" data-caption="Lorem ipsum dolor sit amet, consectetur adipisicing elit."></div>
+               </div>
+          </div>
+</div>
+{% endblock %}
+{% block extrajs %}
+<script type="{% static 'galeria/js/main.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'main.html'%}
+{% block title %}
+ agregando ubicacion
+{% endblock %}
+{% block content %}
+	<section class="bg-light-grey " >
+        <div class="container" style="margin-top:20px; ">
+        	<div class="row" >
+        		<div class="col" >
+        		<form method="POST" >
+        			{% csrf_token %}
+        			{% if error %}
+        			 	<h2>{{error}}</h2>
+        			{% else %}
+
+                                {{var_form.as_p}}
+
+        			<fieldset>
+        				<button type="submit">crear</button>
+        			</fieldset>
+
+        			{% endif %}
+        		</form>
+        		</div>
+        	</div>
+        </div>
+	</section>
+	{% endblock %}
+	{% block extrajs %}
+
+
+	{% endblock %}

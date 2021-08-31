@@ -1,0 +1,58 @@
+{% extends 'adm/index_adm.html' %}
+
+  {% block title %}
+  l Listado de plazas
+  {% endblock %}
+
+  {% block content %}
+  <section class="bg-light-grey">
+        <div class="container ">
+          <div class="row">
+          {% if userss %}
+            <div class="col">
+              <div class="row">
+                <h4>listado de userss</h4>
+              </div>
+              <div class="row">
+                <table border="1">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>username</th>
+                  <th>nombre</th>
+                  <th>apellido</th>
+                  <th>email</th>
+                  <th>es admin?</th>
+                  <th>Opciones </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for user in userss %}
+                  <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>
+                          {% if user.is_staff %}
+                          si
+                          {% else %}
+                          no
+                          {% endif %}
+                    </td>
+                    <td>
+                      <a href="#" class="btn btn-primary">Editar</a>
+                      <a href="#" class="btn btn-danger">eliminar</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <h1>No existen usuarios registrados</h1>
+          {% endif %}
+          </div>
+              </div>
+            </div>
+  {% endblock %}

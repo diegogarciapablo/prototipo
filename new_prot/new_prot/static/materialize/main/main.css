@@ -1,0 +1,28 @@
+.carousel{
+	min-height: 500px;
+	max-width: 100%;
+}
+
+.carousel .carousel-item{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+	width: 1920px;
+	height: 500px;
+}
+
+.carousel .carousel-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.carousel .carousel-item h3, p {
+	vertical-align: top;
+}

@@ -22,7 +22,9 @@
                   <th>direccion</th>
                   <th>url file</th>
                   <th>latitud</th>
+                  {% if user.is_staff == True %}
                   <th>Opciones </th>
+                  {% endif %}
                 </tr>
               </thead>
               <tbody>
@@ -31,12 +33,12 @@
                     <td>{{plaza.id}}</td>
                     <td>{{plaza.n_ubi}}</td>
                     <td>{{plaza.direccion}}</td>
-                    <td>{{plaza.latit}}</td>
-                    <td>{{plaza.foto}}</td>
+                    {% if user.is_staff == True %}
                     <td>
                       <a href="{% url 'crud:edit_plaza' plaza.id %}"><font color="blue">Editar</font></a>
                       <a href="{% url 'crud:elim_plaza' plaza.id %}"><font color="red">eliminar</font></a>
                     </td>
+                    {% endif %}
                   </tr>
                 {% endfor %}
               </tbody>
@@ -47,254 +49,6 @@
           </div>
               </div>
             </div>
-
-
-          <div class="row">
-          {% if comidas %}
-           <div class="col">
-              <div class="row">
-                <h4>listado de establecimientos de comidas</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for comida in comidas %}
-                  <tr>
-                    <td>{{comida.id}}</td>
-                    <td>{{comida.n_ubi}}</td>
-                    <td>{{comida.direccion}}</td>
-                    <td>{{comida.latit}}</td>
-                    <td>{{comida.foto}}</td>
-                    <td>
-                      <a href="{% url 'crud:edit_plaza' comida.id %}"><font color="blue">Editar</font></a>
-                      <a href="{% url 'crud:elim_plaza' comida.id %}"><font color="red">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-             {% else %}
-            <h1>No existen establecimientos de comidas registradas</h1>
-          {% endif %}
-          </div>
-
-          <div class="row">
-          {% if comerciales %}
-          <div class="col">
-              <div class="row">
-                <h4>listado de zonas comerciales</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for comercial in comerciales %}
-                  <tr>
-                    <td>{{comercial.id}}</td>
-                    <td>{{comercial.n_ubi}}</td>
-                    <td>{{comercial.direccion}}</td>
-                    <td>{{comercial.latit}}</td>
-                    <td>{{comercial.foto}}</td>
-                    <td>
-                      <a href="#"><font color="black">editar</font></a>
-                      <a href="#"><font color="black">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-          {% else %}
-            <h1>No existen zonas comerciales registradas</h1>
-          {% endif %}
-          </div>
-
-          <div class="row">
-          {% if alojamientos %}
-          <div class="col">
-              <div class="row">
-                <h4>listado de alojamientos</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for alojamiento in alojamientos %}
-                  <tr>
-                    <td>{{alojamiento.id}}</td>
-                    <td>{{alojamiento.n_ubi}}</td>
-                    <td>{{alojamiento.direccion}}</td>
-                    <td>{{alojamiento.latit}}</td>
-                    <td>{{alojamiento.foto}}</td>
-                    <td>
-                      <a href="#" ><font color="black">editar</font></a>
-                      <a href="#"><font color="black">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-          {% else %}
-            <h1>No existen alojamientos registradas</h1>
-          {% endif %}
-          </div>
-
-          <div class="row">
-          {% if educativos %}
-          <div class="col">
-              <div class="row">
-                <h4>listado de centros educativos</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for educativo in educativos %}
-                  <tr>
-                    <td>{{educativo.id}}</td>
-                    <td>{{educativo.n_ubi}}</td>
-                    <td>{{educativo.direccion}}</td>
-                    <td>{{educativo.latit}}</td>
-                    <td>{{educativo.foto}}</td>
-                    <td>
-                      <a href="#" ><font color="black">editar</font></a>
-                      <a href="#"><font color="black">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-          {% else %}
-            <h1>No existen centros educativos registradas</h1>
-          {% endif %}
-          </div>
-
-          <div class="row">
-          {% if medicos %}
-          <div class="col">
-              <div class="row">
-                <h4>listado de edificios medicos</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for medico in medicos %}
-                  <tr>
-                    <td>{{medico.id}}</td>
-                    <td>{{medico.n_ubi}}</td>
-                    <td>{{medico.direccion}}</td>
-                    <td>{{medico.latit}}</td>
-                    <td>{{medico.foto}}</td>
-                    <td>
-                      <a href="#" ><font color="black">editar</font></a>
-                      <a href="#"><font color="black">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-          {% else %}
-            <h1>No existen edificios medicos registradas</h1>
-          {% endif %}
-          </div>
-
-          <div class="row">
-          {% if religiosos %}
-          <div class="col">
-              <div class="row">
-                <h4>listado de establecimientos religiosos</h4>
-              </div>
-              <div class="row">
-                <table border="1">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>nombre</th>
-                  <th>direccion</th>
-                  <th>url file</th>
-                  <th>latitud</th>
-                  <th>Opciones </th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for religioso in religiosos %}
-                  <tr>
-                    <td>{{religioso.id}}</td>
-                    <td>{{religioso.n_ubi}}</td>
-                    <td>{{religioso.direccion}}</td>
-                    <td>{{religioso.latit}}</td>
-                    <td>{{religioso.foto}}</td>
-                    <td>
-                      <a href="#" ><font color="black">editar</font></a>
-                      <a href="#"><font color="black">eliminar</font></a>
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-              </div>
-            </div>
-          {% else %}
-            <h1>No existen establecimientos religiosos registradas</h1>
-          {% endif %}
-          </div>
-
         </div>
   </section>
 
